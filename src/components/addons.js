@@ -16,6 +16,12 @@ const Addons = (props) => {
                         onChange={event => props.handleCheckChange('githubStats')} />&nbsp; display github profile stats card
                 </label>
             </div>
+            <div className="checkbox">
+                <label htmlFor="top-languages" className="checkboxLabel">
+                    <input id="top-languages" type="checkbox" checked={props.data.topLanguages}
+                        onChange={event => props.handleCheckChange('topLanguages')} />&nbsp; display top languages card
+                </label>
+            </div>
         </div>
     )
 }

@@ -41,6 +41,7 @@ const IndexPage = () => {
     funFact: '',
     visitorsBadge: false,
     githubStats: false,
+    topLanguages: false,
   });
   const [link, setLink] = useState({
     currentWork: '',
@@ -138,7 +139,7 @@ const IndexPage = () => {
     trimDataValues(social, setSocial);
     trimDataValues(link, setLink);
     resetCopyMarkdownButton();
-    if (data.visitorsBadge || data.githubStats) {
+    if (data.visitorsBadge || data.githubStats || data.topLanguages) {
       if (social.github && isGithubUsernameValid(social.github)) {
         generate();
       }
@@ -255,7 +256,7 @@ const IndexPage = () => {
         <Social social={social} handleSocialChange={handleSocialChange} />
         <Addons data={data} handleCheckChange={handleCheckChange} />
         <div className="section">
-          {(data.visitorsBadge || data.githubStats) && !social.github ?
+          {(data.visitorsBadge || data.githubStats || data.topLanguages) && !social.github ?
             <div className="warning">* Please add github username to use these add-ons</div> : ''}
           {social.github && !isGithubUsernameValid(social.github) ?
             <div className="warning">* Github username is invalid, please add a valid username</div> : ''}

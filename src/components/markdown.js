@@ -57,6 +57,13 @@ const Markdown = (props) => {
         }
         return '';
     }
+    const TopLanguages = (props) => {
+        let link = "https://github-readme-stats.vercel.app/api/top-langs/?username=" + props.github + "&hide=html"
+        if (props.show) {
+            return (<>{`<p align="center"> <img src="${link}" alt="${props.github}" /> </p>`}<br /><br /></>);
+        }
+        return '';
+    }
     const isSocial = (social) => {
         return (social.dev || social.twitter || social.codepen || social.codesandbox || social.stackoverflow
             || social.linkedin || social.kaggle || social.instagram || social.fb || social.dribbble || social.behance ||social.medium ||social.youtube );
@@ -86,6 +93,7 @@ const Markdown = (props) => {
             <><DisplayWork prefix={props.prefix.funFact} project={props.data.funFact} /></>
 
             <><DisplaySkills skills={props.skills} /></>
+            <><TopLanguages show={props.data.topLanguages} github={props.social.github} /></>
             <><GithubStats show={props.data.githubStats} github={props.social.github} /></>
             {isSocial(props.social) ? `<p align="center">` : ''} <br />
             <><DisplaySocial base='https://codepen.io' icon='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/codepen.svg'

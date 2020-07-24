@@ -96,6 +96,13 @@ const MarkdownPreview = (props) => {
         }
         return null;
     }
+    const TopLanguagesPreview = (props) => {
+        let link = "https://github-readme-stats.vercel.app/api/top-langs/?username=" + props.github + "&hide=html"
+        if (props.show) {
+            return (<div className="card"> <img className="cardImage" src={link} alt={props.github} /> </div>)
+        }
+        return null;
+    }
     const SkillsPreview = (props) => {
         var listSkills = []
         skills.forEach((skill) => {
@@ -112,6 +119,7 @@ const MarkdownPreview = (props) => {
             <VisitorsBadgePreview show={props.data.visitorsBadge} github={props.social.github} />
             <WorkPreview work={props} />
             <SkillsPreview skills={props.skills} />
+            <TopLanguagesPreview show={props.data.topLanguages} github={props.social.github} />
             <GithubStatsPreview show={props.data.githubStats} github={props.social.github} />
             <SocialPreview social={props.social} />
         </div>
